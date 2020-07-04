@@ -7,6 +7,9 @@ Documentation
 Library         SeleniumLibrary
 Library         String
 Library         BuiltIn
+Library         DebugLibrary
+Library         Collections
+Library         Somador.py
 
 *** Variables ***
 ${URL_BASE}     http://automationpractice.com/

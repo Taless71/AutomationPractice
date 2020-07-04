@@ -1,4 +1,6 @@
 *.png
 *.html
 *.xml
+*.log
+*.pyc
 ENV/
