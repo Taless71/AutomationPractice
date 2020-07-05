@@ -26,8 +26,7 @@ Pesquisar
     Click Element                       ${BOTAO_PESQUISAR} 
 
 Ir para o carrinho
-    Wait Until Element is Visible       ${BOTAO_CARRINHO}
-    Click Element                       ${BOTAO_CARRINHO}
+    Go To                               ${URL_BASE}index.php?controller=order
 
 Inicializar lista de valores
     @{VALORES}      Create List

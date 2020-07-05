@@ -17,6 +17,7 @@ ${BROWSER}      chrome
 
 *** Keywords ***
 Abrir Navegador
+    Set Selenium Speed              0.1 seconds
     Open Browser    about:blank     ${BROWSER}
     Maximize Browser Window   
 
