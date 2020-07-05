@@ -3,10 +3,12 @@ Documentation   Esse arquivo contém as funções e seletores referentes a tela 
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***
-${BOTAO_APAGAR_REGISTRO}        css=tbody tr:first-child .cart_quantity_delete    #Esse seletor é sempre referente ao botão delete do primeiro registro
-${TOTAL_DOS_PRODUTOS}           id=total_product  
-${ALERTA_CARRINHO_VAZIO}        css=.alert  
-${VALOR_UNITARIO_PRODUTO}       css=   
+${BOTAO_APAGAR_REGISTRO}            css=tbody tr:first-child .cart_quantity_delete                 #Esse seletor é sempre referente ao botão delete do primeiro registro
+${TOTAL_DOS_PRODUTOS}               id=total_product  
+${ALERTA_CARRINHO_VAZIO}            css=.alert  
+${BOTAO_PROC_CHECKOUT_RESUMO}       css=.cart_navigation [title="Proceed to checkout"]
+${BOTAO_PROC_CHECKOUT_ENDERECO}     css=[name="processAddress"]
+${BOTAO_PROC_CHECKOUT_ENVIO}        css=[name="processCarrier"]      
 
 *** Keywords ***
 Limpar carrinho
@@ -16,7 +18,7 @@ Limpar carrinho
     #Verifica se o botão de excluir ainda está visível, se sim, retorna o status FALSE, fazendo em seguida com que a keyword seja executada novamente até não
     #existirem mais botões de excluir
     Run Keyword If      "${STATUS}"=="False"                Limpar carrinho
-    Element text should Be              ${ALERTA_CARRINHO_VAZIO}        Your shopping cart is empty.
+    Verificar se carrinho está vazio
 
 Calcular valor total e verificar se o valor correto é apresentado
     ${TOTAL}                Somar Valores da lista      ${VALORES}
@@ -45,3 +47,22 @@ Calcular e validar valor da quantidade de produto
     ${VALOR_TOTAL_ESPERADO}             Evaluate        ${VALOR_UNITARIO}*${QTD_ATUAL}
     Wait Until Keyword Succeeds         5s      0.5s    Element text should be              ${SELETOR_TOTAL_UNITARIO_PROF}           $${VALOR_TOTAL_ESPERADO}
     #Uma forma de esperar a página atualizar o valor. 
+
+Clicar botão proceder para o checkout resumo
+    Wait Until Element is Visible       ${BOTAO_PROC_CHECKOUT_RESUMO}
+    Scroll Element Into View            ${BOTAO_PROC_CHECKOUT_RESUMO}
+    Click Element                       ${BOTAO_PROC_CHECKOUT_RESUMO}
+    
+Clicar botão proceder para o checkout endereço
+    Wait Until Element is Visible       ${BOTAO_PROC_CHECKOUT_ENDERECO}
+    Scroll Element Into View            ${BOTAO_PROC_CHECKOUT_ENDERECO}
+    Click Element                       ${BOTAO_PROC_CHECKOUT_ENDERECO}
+    
+Clicar botão proceder para o checkout envio
+    Wait Until Element is Visible       ${BOTAO_PROC_CHECKOUT_ENVIO}
+    Scroll Element Into View            ${BOTAO_PROC_CHECKOUT_ENVIO}
+    Click Element                       ${BOTAO_PROC_CHECKOUT_ENVIO}
+
+Verificar se carrinho está vazio
+    Wait Until Element is Visible       ${ALERTA_CARRINHO_VAZIO}
+    Element text should Be              ${ALERTA_CARRINHO_VAZIO}        Your shopping cart is empty.

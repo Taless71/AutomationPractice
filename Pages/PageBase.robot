@@ -27,7 +27,3 @@ Pesquisar
 
 Ir para o carrinho
     Go To                               ${URL_BASE}index.php?controller=order
-
-Inicializar lista de valores
-    @{VALORES}      Create List
-    Set Test Variable       ${VALORES}

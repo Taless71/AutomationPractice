@@ -23,3 +23,7 @@ Abrir Navegador
 
 Fechar Navegador
     Close Browser
+
+Inicializar lista de valores
+    @{VALORES}      Create List
+    Set Test Variable       ${VALORES}
