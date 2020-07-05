@@ -7,6 +7,9 @@ Documentation
 Library         SeleniumLibrary
 Library         String
 Library         BuiltIn
+Library         DebugLibrary
+Library         Collections
+Library         Somador.py
 
 *** Variables ***
 ${URL_BASE}     http://automationpractice.com/
@@ -14,6 +17,7 @@ ${BROWSER}      chrome
 
 *** Keywords ***
 Abrir Navegador
+    Set Selenium Speed              0.1 seconds
     Open Browser    about:blank     ${BROWSER}
     Maximize Browser Window   
 
