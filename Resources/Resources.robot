@@ -9,7 +9,7 @@ Library         String
 Library         BuiltIn
 Library         DebugLibrary
 Library         Collections
-Library         Somador.py
+Library         Funcoes.py
 
 *** Variables ***
 ${URL_BASE}     http://automationpractice.com/
