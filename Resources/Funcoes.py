@@ -1,3 +1,5 @@
+import pyautogui
+
 def somar_valores_da_lista(valores):
     """
     Soma todos os valores presentes dentro da lista
@@ -34,3 +36,15 @@ def string_to_list(palavra):
     palavra = palavra.replace('e', '')
     lista = palavra.split()
     return lista
+
+def mover_cursor_do_mouse(x, y):
+    """
+    Move o mouse para a posição X, Y do monitor
+
+    Parameters
+        X : int
+            Posição vertical do monitor
+        Y : int
+            Posição horizontal do monitor    
+    """
+    pyautogui.moveTo(x,y)

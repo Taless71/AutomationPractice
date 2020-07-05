@@ -41,6 +41,7 @@ Cenário 04: Finalizar checkout e verificar carrinho vazio
     E concordei com os termos de serviço
     E selecionei o método de pagamento por cheque e confirmo
     Então o sistema deve exibir a mensagem "Your order on My Store is complete." e esvaziar o carrinho
+    [Teardown]      Deslogar
 
 *** Keywords ***
 Dado que eu possuo um item no carrinho e prossegui para o checkout
@@ -100,3 +101,6 @@ Então o sistema deve exibir a mensagem "${MENSAGEM_ESPERADA}" e esvaziar o carr
     Verificar mensagem de confirmação de compra  MENSAGEM_ESPERADA=${MENSAGEM_ESPERADA}
     Ir para o carrinho
     Verificar se carrinho está vazio
+
+Deslogar
+    Clicar em Sign out
