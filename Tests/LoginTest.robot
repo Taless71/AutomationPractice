@@ -1,18 +1,20 @@
 *** Settings ***
-Documentation
-...            Suite de teste de casos relacionados ao login no sistema
+Documentation  Suite de teste de casos relacionados ao login no sistema
+
+#Imports#
 Resource       ..\\Pages\\PageBase.robot
 Resource       ..\\Pages\\IndexPage.robot
 Resource       ..\\Pages\\SignInPage.robot
 Resource       ..\\Pages\\MyAccountPage.robot
 
-Test Setup     Inicializar variáveis de teste
-
+#Tags#
 Force Tags     Login
+
+#Setup#
+Test Setup     Inicializar variáveis de teste
 
 *** Test Cases ***
 Cenário 01: Login válido
-    [Tags]  Login valido
     Dado que estou na página inicial
     Quando clico em "Sign in"
     E realizo um login com email "${EMAIL_VALIDO}" e senha "${SENHA_VALIDA}"
@@ -20,21 +22,18 @@ Cenário 01: Login válido
     [Teardown]    Realizar logout
 
 Cenário 02: Login inválido - email
-    [Tags]  Login invalido
     Dado que estou na página inicial
     Quando clico em "Sign in"
     E realizo um login com email "${EMAIL_INVALIDO}" e senha "${SENHA_VALIDA}"
     Então a tela deve apresentar a mensagem "Authentication failed"
 
 Cenário 03: Login inválido - senha
-    [Tags]  Login invalido
     Dado que estou na página inicial
     Quando clico em "Sign in"
     E realizo um login com email "${EMAIL_VALIDO}" e senha "${SENHA_INVALIDA}"
     Então a tela deve apresentar a mensagem "Authentication failed"
 
 Cenário 04: Login inválido - e-mail e senha em branco
-    [Tags]  Login invalido
     Dado que estou na página inicial
     Quando clico em "Sign in"
     E realizo um login com email e senha em branco

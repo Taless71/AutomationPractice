@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation   Esse arquivo contém funções e seletores em comum entre todas as telas do sistema
+
 Resource        ..\\Resources\\Resources.robot   
 
 *** Variables ***
@@ -27,7 +28,3 @@ Pesquisar
 
 Ir para o carrinho
     Go To                               ${URL_BASE}index.php?controller=order
-
-Inicializar lista de valores
-    @{VALORES}      Create List
-    Set Test Variable       ${VALORES}
