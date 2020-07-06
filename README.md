@@ -5,6 +5,7 @@ diversos fluxos e cenários do site http://automationpractice.com/index.php, gar
 dos componentes oferecidos por ele, bem como também a navegação pela interface.
 
 Fluxos escolhidos para testes automatizados, seguido dos casos de testes:
+    
     -Login
         -Válido
         -Inválido
