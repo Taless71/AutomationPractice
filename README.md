@@ -24,3 +24,5 @@ Fluxos escolhidos para testes automatizados, seguido dos casos de testes:
         -Ir para o checkout logado e verificar se o sistema pulou a etapa de login e foi para a próxima etapa
         -Ir para o checkout com dois produtos no carrinho e verificar se no ultimo passo ele apresenta corretamente o valor total dos produtos comprados
         -Ir para o checkout e finalizar a compra, verificando se no fim é exibida corretamente a mensagem de sucesso e se o carrinho é esvaziado
+    
+Testes localizados na pasta "Tests". Executar robot path/to/folder/AutomationPractice/Tests

@@ -7,7 +7,6 @@ Documentation
 Library         SeleniumLibrary
 Library         String
 Library         BuiltIn
-Library         DebugLibrary
 Library         Collections
 Library         Funcoes.py
 
