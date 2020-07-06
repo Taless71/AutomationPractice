@@ -1,9 +1,7 @@
 *** Settings ***
-Documentation   
-...             Esse arquivo contem as funções e seletores referentes a tela Index do site AutomationPractice
-Resource        ..\\Resources\\Resources.robot
+Documentation   Esse arquivo contem as funções e seletores referentes a tela Index do site AutomationPractice
 
-*** Variables ***
+Resource        ..\\Resources\\Resources.robot
 
 *** Keywords ***
 Ir para página inicial

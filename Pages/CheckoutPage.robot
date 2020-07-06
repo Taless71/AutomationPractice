@@ -1,5 +1,6 @@
 *** Settings ***
-Documentation    Esse arquivo contem as funções e seletores referentes as telas de checkout do site AutomationPractice
+Documentation    Esse arquivo contem as funções e seletores referentes as etapas de checkout do site AutomationPractice
+
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***

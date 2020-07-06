@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation   Esse arquivo contém funções e seletores em comum entre todas as telas do sistema
+
 Resource        ..\\Resources\\Resources.robot   
 
 *** Variables ***

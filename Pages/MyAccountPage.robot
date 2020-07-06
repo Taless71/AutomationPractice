@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation   
-...             Esse arquivo contem as funções e seletores referentes a tela do usuário do site AutomationPractice
+Documentation   Esse arquivo contem as funções e seletores referentes a tela do usuário do site AutomationPractice
+
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***

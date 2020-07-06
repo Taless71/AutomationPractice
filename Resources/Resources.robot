@@ -25,5 +25,9 @@ Fechar Navegador
     Close Browser
 
 Inicializar lista de valores
+    [Documentation]
+    ...     Keyword resposável por inicializar uma lista de valores quando necessário.
+    ...     Utilizada para armazenar os valores de produtos adicionados no carrinho
+    ...     Setada como variável de teste
     @{VALORES}      Create List
     Set Test Variable       ${VALORES}

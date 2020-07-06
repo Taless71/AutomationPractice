@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Esse arquivo contem as funções e seletores referentes a tela de endereços do usuário do site AutomationPractice
+
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***

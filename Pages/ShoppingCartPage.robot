@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation   Esse arquivo contém as funções e seletores referentes a tela de carrinho do usuário do site AutomationPractice
+
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***
@@ -12,6 +13,10 @@ ${BOTAO_PROC_CHECKOUT_ENVIO}        css=[name="processCarrier"]
 
 *** Keywords ***
 Limpar carrinho
+    [Documentation]
+    ...     Essa keyword faz com que todos os produtos presentes dentro do carrinho sejam removidos dele
+    ...     Ela sempre vai apagar o primeiro produto, até não existir mais produto algum na listagem.
+    ...     Ao final, verifica se a mensagem de carrinho sem produtos é exibida
     Wait Until Element is Visible       ${BOTAO_APAGAR_REGISTRO}
     Click Element                       ${BOTAO_APAGAR_REGISTRO}                   #Apaga o primeiro registro da lista
     ${STATUS}           Run Keyword and return status       Wait until Element is Not Visible   ${BOTAO_APAGAR_REGISTRO}    4s      
@@ -21,13 +26,22 @@ Limpar carrinho
     Verificar se carrinho está vazio
 
 Calcular valor total e verificar se o valor correto é apresentado
+    [Documentation]
+    ...     Essa keyword soma todos os valores contidos na lista ${VALORES}, que é inicializada e setada como varável de teste
+    ...     Toda vez que um produto é adicionado no carrinho, seu valor é armazenado na lista
+    ...     A lista então é passada para um função python que retorna a soma dos valores presentes nela
+    ...     O resultado é comparado com o total de valor dos produtos na tela
     ${TOTAL}                Somar Valores da lista      ${VALORES}
     Wait Until Element is Visible       ${TOTAL_DOS_PRODUTOS}
     ${TOTAL_ATUAL}      Get Text        ${TOTAL_DOS_PRODUTOS}
-    ${TOTAL_ATUAL}      Remove String   ${TOTAL_ATUAL}        $     
+    ${TOTAL_ATUAL}      Remove String   ${TOTAL_ATUAL}        $         #Remove o "$"
     Should Be Equal As Strings          ${TOTAL_ATUAL}        ${TOTAL}
 
 Aumentar quantidade de produto
+    [Documentation]
+    ...     Essa keyword incrementa a quantidade de um produto na listagem do carrinho
+    ...     Arguments: ${POS} - Posição do produto que terá sua quantidade incrementada na listagem
+    ...     ${QTD_NOVA} - Valor da nova quantidade do produto
     [Arguments]         ${POS}          ${QTD_NOVA}
     ${SELETOR_PRODUTO}  Set Variable    css=tbody tr:nth-child(${POS}) .cart_quantity_input
     Wait Until Element is Visible       ${SELETOR_PRODUTO}
@@ -36,6 +50,11 @@ Aumentar quantidade de produto
     #Uma forma de tirar o foco do campo para assim a tela atualizar o valor
 
 Calcular e validar valor da quantidade de produto
+    [Documentation]
+    ...     Keyword responsável por calcular e verificar se, ao alterar a quantidade de um produto no carrinho, seu valor é atualizado
+    ...     As variáveis com a palavra SELETOR no inicio são setadas de acordo com a posição (${POS}) do produto alvo que será alterado
+    ...     Ao fim, é comparado o valor calculado (valor unitário do produto x nova quantidade) com o valor total do produto exibido no carrinho
+    ...     Arguments: ${POS} - Posição do produto que teve sua quantidade incrementada na listagem
     [Arguments]         ${POS}
     ${SELETOR_PRODUTO}                  Set Variable    css=tbody tr:nth-child(${POS}) .cart_quantity_input
     ${SELETOR_VALOR_UNITARIO_PROD}      Set Variable    css=tbody tr:nth-child(${POS}) .price span:first-child

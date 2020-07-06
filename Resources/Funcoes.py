@@ -47,4 +47,4 @@ def mover_cursor_do_mouse(x, y):
         Y : int
             Posição horizontal do monitor    
     """
-    pyautogui.moveTo(x,y)
+    pyautogui.moveTo(int(x),int(y))

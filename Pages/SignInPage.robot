@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation   
-...             Esse arquivo contem as funções e seletores referentes a tela de login do site AutomationPractice
+Documentation   Esse arquivo contem as funções e seletores referentes a tela de login do site AutomationPractice
+
 Resource        ..\\Resources\\Resources.robot
 
 *** Variables ***
@@ -11,6 +11,10 @@ ${ALERTA_ERRO}          css=.alert:not([style="display:none"])  #Esse seletor pe
 
 *** Keywords ***
 Realizar login
+    [Documentation]
+    ...     Keyword reposável por relizar a ação de login
+    ...     Arguments: ${EMAIL} - E-mail do usuário
+    ...                ${SENHA} - Senha do usuário
     [Arguments]        ${EMAIL}         ${SENHA}
     Wait Until Element is Visible       ${EMAIL_LOGIN}
     Input Text         ${EMAIL_LOGIN}         ${EMAIL}      #Preenche campo email
